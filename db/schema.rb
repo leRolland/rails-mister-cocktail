@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 2020_01_04_123460) do
 
   create_table "doses", force: :cascade do |t|
     t.string "description"
-    t.bigint "ingredients_id"
-    t.bigint "cocktails_id"
+    t.bigint "ingredient_id"
+    t.bigint "cocktail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cocktails_id"], name: "index_doses_on_cocktails_id"
-    t.index ["ingredients_id"], name: "index_doses_on_ingredients_id"
+    t.index ["cocktail_id"], name: "index_doses_on_cocktail_id"
+    t.index ["ingredient_id"], name: "index_doses_on_ingredient_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -37,6 +37,6 @@ ActiveRecord::Schema.define(version: 2020_01_04_123460) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "doses", "cocktails", column: "cocktails_id"
-  add_foreign_key "doses", "ingredients", column: "ingredients_id"
+  add_foreign_key "doses", "cocktails"
+  add_foreign_key "doses", "ingredients"
 end
